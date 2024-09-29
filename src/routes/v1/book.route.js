@@ -1,6 +1,7 @@
 const express=require('express');
 const {bookController}=require('../../controllers');
 const { singleFileUpload } = require("../../helpers/upload");
+const { accessToken } = require('../../middlewares/auth');
 
 const router=express.Router();
 
@@ -11,7 +12,7 @@ bookController.createBook
 );
 
 // // list book 
-router.get("/list-book",
+router.get("/list-book",accessToken(),
     bookController.getBookList
     );
 
